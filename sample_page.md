@@ -26,7 +26,7 @@ plt.show()
 
 Terlihat bahwa di dalam dataset ada dua kelompok pelanggan, yaitu 20% pelanggan yang sudah churn dan sisanya 80% yang masih aktif.
 
-### Melihat Isi Kolom
+### 3. Melihat Isi Kolom
 ```javascript
 df1['product'].value_counts()
 ```
@@ -35,10 +35,31 @@ Karena masih berupa teks berisi nama-nama produk ("Kartu A", "Kartu B", "Kartu C
 ```javascript
 pd.get_dummies(df1['product'])
 ```
+Seperti yang kita harapkan, ada tiga kolom baru untuk ketiga nama produk. Pelanggan yang pertama karena menggunakan produk "Kartu A", maka nilainya 1 di kolom produk tersebut, dan lainnya bernilai 0. Demikian juga pelanggan yang paling bawah kita tahu menggunakan produk "Kartu C" karena kolom tersebut bernilai 1. 
 
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+Selanjutnya kita gabungkan ketiga kolom baru tersebut dengan df1, dan disimpan sebagai dataframe baru, yaitu df2. Karena sudah diwakili tiga kolom baru tadi, maka feature "product" bisa dibuang dari dataset dengan perintah drop():
 
-### 4. Provide a basis for further data collection through surveys or experiments
+```javascript
+df2 = pd.concat([df1, pd.get_dummies(df1['product'])], axis=1, sort=False)
+df2.drop(['product'], axis=1, inplace=True)
+dfKorelasi = df2.corr()
+```
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
 
+### 4. Feature Selection
+
+```javascript
+import seaborn as sns
+dfKorelasi = df2.corr()
+sns.heatmap(dfKorelasi, xticklabels=dfKorelasi.columns.values, yticklabels=dfKorelasi.columns.values, annot = True, annot_kws={'size':12})
+heat_map=plt.gcf()
+heat_map.set_size_inches(10,10)
+plt.xticks(fontsize=15)
+plt.yticks(fontsize=15)
+plt.show()
+```
+<img src="images/download(1).png?raw=true"/>
+
+Kita lihat dari heatmap di atas bahwa feature "reload_1" dan "reload_2" memiliki angka korelasi yang tinggi, yaitu 0.92 sehingga kita bisa memilih salah satunya saja untuk proses training. Demikian pula halnya dengan pasangan "socmed_1" dan "socmed_2" yang memiliki korelasi tinggi sehingga bisa kita buang salah satunya. Hal yang sama terjadi pada "music" dan "games". 
+
+Proses feature selection di atas menghasilkan kesimpulan, yaitu kita akan membuang feature-feature ini dari proses training. "reload_2", "socmed_2", dan "games".
