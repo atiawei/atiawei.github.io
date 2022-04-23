@@ -4,7 +4,7 @@
 
 ### Data Science
 
-[Churn Prediction](https://colab.research.google.com/drive/113UrgppJhIu03hzfXRpOVVFYntkxO7eG?usp=sharing)
+[Churn Prediction](/sample_page)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
