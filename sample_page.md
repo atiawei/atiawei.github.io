@@ -133,6 +133,7 @@ print("AUC=", auc)
 ```
 Angka akurasi meningkat menjadi 93,8% . Nilai recall juga meningkat cukup signifikan dibandingkan dengan algoritma Logistic Regression. 
 
+### 7. Melihat Fitur yang Paling Mempengaruhi Churn
 Selanjutnya akan dilihat 10 feature yang paling mempengaruhi churn dengan menggunakan atribut feature_importances. Hasilnya akan ditampilkan dalam sebuah bar chart. 
 
 ```javascript
