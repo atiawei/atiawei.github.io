@@ -3,3 +3,4 @@ logo: "/images/Foto Atia Nur Arifah.jpg?raw=true" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
   Mahasiswa aktif yang sedang menempuh pendidikan di Universitas Padjadjaran program studi Statistika. Aktif dalam kegiatan organisasi serta unit kegiatan mahasiswa. Memiliki ketertarikan dan senang mempelajari hal baru khususnya yang berkaitan dengan data analysis, data visualization dan data mining.
 
+theme: jekyll-theme-minimal
