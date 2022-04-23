@@ -1,26 +1,40 @@
-## This can be your internal website page / project page
+## Churn Prediction
 
-**Project description:** Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+**Project description:** Dalam contoh kasus ini, akan dibuat model churn prediction untuk sebuah perusahaan telekomunikasi yang menjual layanan internet nirkabel dengan kartu prabayar. Tidak sedikit pelanggan perusahaan ini yang telah berpindah langganan ke perusahaan pesaing akibat tawaran harga dan layanan yang lebih menarik. Pihak manajemen perusahaan ini menyadari terkait masalah tersebut dan berencana meluncurkan program-program promosi untuk menahan churn rate. Program promosi ini hanya akan ditawarkan melalui SMS kepada kelompok pelanggan yang dianggap rawan churn. Agar lebih efektif, machine learning diperlukan untuk menentukan kelompok pelanggan tsb.
 
-### 1. Suggest hypotheses about the causes of observed phenomena
-
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+### 1. Input Data
 
 ```javascript
-if (isAwesome){
-  return true
-}
+import pandas as pd
+df1=pd.read_csv('churnprediction_ch9.csv', sep=',', index_col=['customer_id'])
+df1.head(10)
+df1.info()
 ```
 
-### 2. Assess assumptions on which statistical inference will be based
+
+### 2. Menampilkan Persentase Pelanggan Aktif dan Pelanggan Churn
 
 ```javascript
-if (isAwesome){
-  return true
-}
+dfAktifChurn = df1.groupby('churn').count()
+import matplotlib.pyplot as plt
+plt.pie(dfAktifChurn['product'],labels=['Aktif', 'Churn'], autopct='%1.0f%%')
+plt.title('Persentase Pelanggan Aktif vs Churn')
+plt.axis('equal')
+plt.show()
 ```
+<img src="images/download.png?raw=true"/>
 
-### 3. Support the selection of appropriate statistical tools and techniques
+Terlihat bahwa di dalam dataset ada dua kelompok pelanggan, yaitu 20% pelanggan yang sudah churn dan sisanya 80% yang masih aktif.
+
+### Melihat Isi Kolom
+```javascript
+df1['product'].value_counts()
+```
+Karena masih berupa teks berisi nama-nama produk ("Kartu A", "Kartu B", "Kartu C"), maka feature ini harus diubah menjadi numerik. Cara yang paling umum adalah dengan metode one-hot encoding, yaitu menuliskan semua nulai yang mungkin muncul menjadi kolom kemudian memberikan nilai 0 dan 1 di kolom tersebut, tergantung pada pelanggan yang diwakili di setiap baris apakah menggunakan produk yang bersangkutan. Dalam kasus kita, karena ada tiga produk maka akan ada tiga kolom baru.
+
+```javascript
+pd.get_dummies(df1['product'])
+```
 
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
@@ -28,4 +42,3 @@ if (isAwesome){
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
