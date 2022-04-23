@@ -90,7 +90,6 @@ X_test = scl.transform(X_test)
 ### 5. Melatih Model
 
 ```javascript
-#Melatih Model (Reglog)
 import sklearn.model_selection as ms
 import sklearn.linear_model as lm
 import sklearn.metrics as met
@@ -112,4 +111,40 @@ auc = met.roc_auc_score(y_test, y_prediksi)
 print("AUC=", auc)
 ```
 
-Dari hasil diatas, nilai akurasi model adalah 85%. 
+Dari hasil diatas, nilai akurasi model adalah 85%. Sebagai upaya membuat model yang kinerjanya lebih baik, kita akan mencoba algoritma lain yaitu Random Forest. Secara umum, algoritma ini lebih cocok untuk digunakan di dataset yang kelasnya tidak seimbang seperti kasus ini. 
+
+### 6. Re-training
+
+```javascript
+import sklearn.ensemble as ens
+import sklearn.metrics as met
+model = ens.RandomForestClassifier(n_estimators=200, random_state=0)
+model.fit(X_train, y_train)
+y_prediksi = model.predict(X_test)
+print(y_prediksi)
+score = met.accuracy_score(y_test, y_prediksi)
+print("accuracy=", score)
+precision = met.precision_score(y_test, y_prediksi)
+print("precision=", precision)
+recall = met.recall_score(y_test, y_prediksi)
+print("recall=", recall)
+auc = met.roc_auc_score(y_test, y_prediksi)
+print("AUC=", auc)
+```
+Angka akurasi meningkat menjadi 93,8% . Nilai recall juga meningkat cukup signifikan dibandingkan dengan algoritma Logistic Regression. 
+
+Selanjutnya akan dilihat 10 feature yang paling mempengaruhi churn dengan menggunakan atribut feature_importances. Hasilnya akan ditampilkan dalam sebuah bar chart. 
+
+```javascript
+important_feature = pd.Series(model.feature_importances_, index=X.columns)
+important_feature.nlargest(10).plot(kind='barh')
+```
+<img src="images/download (2).png?raw=true"/>
+
+### 7. Kesimpulan 
+
+Tiga faktor penentu terpenting terhadap kemungkinan apakah seorang pelanggan akan berhenti berlangganan adalah tenure (lamanya pelanggan menjadi pelanggan), reload (jumlah isi ulang pulsa), dan days active (jumlah hari aktif menggunakan layanan).
+
+Kartu B dan kartu C adalah dua produk yang berpengaruh terhadap churn score. Artinya pelanggan produk kartu A lebih setia dan tidak perlu terlalu dikhawatirkan akan berhenti berlangganan dalam waktu dekat.
+
+Berdasarkan model prediksi yang sudah dibuat, hendaknya pihak departemen marketing perusahaan ini dapat membidik pelanggan yang masuk dalam kriteria di atas agar mereka dapat menjadi target program promosi, untuk mencegah mereka berhenti berlangganan.
