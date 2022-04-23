@@ -1,8 +1,8 @@
 ## Portfolio
 
----
+[eheheh coba-coba ae dah]
 
-### Category Name 1 
+### Data Science
 
 [Project 1 Title](/sample_page)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
