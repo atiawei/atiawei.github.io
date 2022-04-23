@@ -1,6 +1,7 @@
 ## Churn Prediction
 
-**Project description:** Dalam contoh kasus ini, akan dibuat model churn prediction untuk sebuah perusahaan telekomunikasi yang menjual layanan internet nirkabel dengan kartu prabayar. Tidak sedikit pelanggan perusahaan ini yang telah berpindah langganan ke perusahaan pesaing akibat tawaran harga dan layanan yang lebih menarik. Pihak manajemen perusahaan ini menyadari terkait masalah tersebut dan berencana meluncurkan program-program promosi untuk menahan churn rate. Program promosi ini hanya akan ditawarkan melalui SMS kepada kelompok pelanggan yang dianggap rawan churn. Agar lebih efektif, machine learning diperlukan untuk menentukan kelompok pelanggan tsb.
+**Project description** 
+Dalam contoh kasus ini, akan dibuat model churn prediction untuk sebuah perusahaan telekomunikasi yang menjual layanan internet nirkabel dengan kartu prabayar. Tidak sedikit pelanggan perusahaan ini yang telah berpindah langganan ke perusahaan pesaing akibat tawaran harga dan layanan yang lebih menarik. Pihak manajemen perusahaan ini menyadari terkait masalah tersebut dan berencana meluncurkan program-program promosi untuk menahan churn rate. Program promosi ini hanya akan ditawarkan melalui SMS kepada kelompok pelanggan yang dianggap rawan churn. Agar lebih efektif, machine learning diperlukan untuk menentukan kelompok pelanggan tsb.
 
 ### 1. Input Data
 
@@ -63,3 +64,52 @@ plt.show()
 Kita lihat dari heatmap di atas bahwa feature "reload_1" dan "reload_2" memiliki angka korelasi yang tinggi, yaitu 0.92 sehingga kita bisa memilih salah satunya saja untuk proses training. Demikian pula halnya dengan pasangan "socmed_1" dan "socmed_2" yang memiliki korelasi tinggi sehingga bisa kita buang salah satunya. Hal yang sama terjadi pada "music" dan "games". 
 
 Proses feature selection di atas menghasilkan kesimpulan, yaitu kita akan membuang feature-feature ini dari proses training. "reload_2", "socmed_2", dan "games".
+
+```javascript
+X = df2.drop(['reload_2', 'socmed_2', 'games', 'churn'], axis=1, inplace=False)
+y = df2['churn']
+```
+
+Dari dataset ini, kita ambil 80% sebagai training dataset dan sisanya 20% sebagai test dataset. Untuk keperluan ini kita pergunakan modul model_selection.
+
+```javascript
+import sklearn.model_selection as ms
+X_train,X_test,y_train,y_test=ms.train_test_split(X,y,test_size=0.8,random_state=0)
+```
+Setelah program diatas dijalankan, X_train akan berisi semua feature dan y_train berisi target yang akan kita pakai untuk proses training model. Sementara itu X_test dan y_test akan berisi test dataset yang akan kita pakai untuk mengukur kinerja model. 
+
+Satu hal terakhir yang perlu dilakukan adalah normalisasi data atau disebut juga feature scalling, yaitu "memadatkan" semua feature agar seragam jangkauan nilai minimum dan maksimumnya. Ini penting agar proses pembuatan model bisa lebih lancar.
+
+```javascript
+import sklearn.preprocessing as pp
+scl = pp.StandardScaler(copy=True, with_mean=True, with_std=True)
+scl.fit(X_train)
+X_train = scl.transform(X_train)
+X_test = scl.transform(X_test)
+```
+### 5. Melatih Model
+
+```javascript
+#Melatih Model (Reglog)
+import sklearn.model_selection as ms
+import sklearn.linear_model as lm
+import sklearn.metrics as met
+model = lm.LogisticRegression(solver='lbfgs')
+model.fit(X_train, y_train)
+```
+Sampai titik ini, model telah terbentuk. Langkah selanjutnya kita ukur kinerja model ini dengan test dataset, kemudian tampiplkan nilai akurasi, precision, recall, dan AUC-nya. 
+
+```javascript
+y_prediksi = model.predict(X_test)
+print(y_prediksi)
+score = met.accuracy_score(y_test, y_prediksi)
+print("accuracy=", score)
+precision = met.precision_score(y_test, y_prediksi)
+print("precision=", precision)
+recall = met.recall_score(y_test, y_prediksi)
+print("recall=", recall)
+auc = met.roc_auc_score(y_test, y_prediksi)
+print("AUC=", auc)
+```
+
+Dari hasil diatas, nilai akurasi model adalah 85%. 
