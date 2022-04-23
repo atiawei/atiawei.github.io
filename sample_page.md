@@ -1,6 +1,7 @@
 ## Churn Prediction
 
 **Project description** 
+
 Dalam contoh kasus ini, akan dibuat model churn prediction untuk sebuah perusahaan telekomunikasi yang menjual layanan internet nirkabel dengan kartu prabayar. Tidak sedikit pelanggan perusahaan ini yang telah berpindah langganan ke perusahaan pesaing akibat tawaran harga dan layanan yang lebih menarik. Pihak manajemen perusahaan ini menyadari terkait masalah tersebut dan berencana meluncurkan program-program promosi untuk menahan churn rate. Program promosi ini hanya akan ditawarkan melalui SMS kepada kelompok pelanggan yang dianggap rawan churn. Agar lebih efektif, machine learning diperlukan untuk menentukan kelompok pelanggan tsb.
 
 ### 1. Input Data
@@ -142,7 +143,7 @@ important_feature.nlargest(10).plot(kind='barh')
 ```
 <img src="images/download (2).png?raw=true"/>
 
-### 7. Kesimpulan 
+### 8. Kesimpulan 
 
 Tiga faktor penentu terpenting terhadap kemungkinan apakah seorang pelanggan akan berhenti berlangganan adalah tenure (lamanya pelanggan menjadi pelanggan), reload (jumlah isi ulang pulsa), dan days active (jumlah hari aktif menggunakan layanan).
 
