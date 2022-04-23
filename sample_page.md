@@ -6,9 +6,9 @@ Dalam contoh kasus ini, akan dibuat model churn prediction untuk sebuah perusaha
 
 ### Code & Dataset
 
-[Code] (https://colab.research.google.com/drive/113UrgppJhIu03hzfXRpOVVFYntkxO7eG?usp=sharing)
+[Code] (/https://colab.research.google.com/drive/113UrgppJhIu03hzfXRpOVVFYntkxO7eG?usp=sharing)
 
-[dataset] (https://drive.google.com/file/d/1_eoIAiaWA53vCb5vepO52pxJSKp2anST/view?usp=sharing)
+[dataset] (/https://drive.google.com/file/d/1_eoIAiaWA53vCb5vepO52pxJSKp2anST/view?usp=sharing)
 
 ### 1. Input Data
 
