@@ -4,6 +4,11 @@
 
 Dalam contoh kasus ini, akan dibuat model churn prediction untuk sebuah perusahaan telekomunikasi yang menjual layanan internet nirkabel dengan kartu prabayar. Tidak sedikit pelanggan perusahaan ini yang telah berpindah langganan ke perusahaan pesaing akibat tawaran harga dan layanan yang lebih menarik. Pihak manajemen perusahaan ini menyadari terkait masalah tersebut dan berencana meluncurkan program-program promosi untuk menahan churn rate. Program promosi ini hanya akan ditawarkan melalui SMS kepada kelompok pelanggan yang dianggap rawan churn. Agar lebih efektif, machine learning diperlukan untuk menentukan kelompok pelanggan tsb. 
 
+### Code & Dataset
+
+[Code] (https://colab.research.google.com/drive/113UrgppJhIu03hzfXRpOVVFYntkxO7eG?usp=sharing)
+
+[dataset] (https://drive.google.com/file/d/1_eoIAiaWA53vCb5vepO52pxJSKp2anST/view?usp=sharing)
 
 ### 1. Input Data
 
@@ -151,7 +156,3 @@ Tiga faktor penentu terpenting terhadap kemungkinan apakah seorang pelanggan aka
 Kartu B dan kartu C adalah dua produk yang berpengaruh terhadap churn score. Artinya pelanggan produk kartu A lebih setia dan tidak perlu terlalu dikhawatirkan akan berhenti berlangganan dalam waktu dekat.
 
 Berdasarkan model prediksi yang sudah dibuat, hendaknya pihak departemen marketing perusahaan ini dapat membidik pelanggan yang masuk dalam kriteria di atas agar mereka dapat menjadi target program promosi, untuk mencegah mereka berhenti berlangganan.
-
-### Code & Dataset
-[Code (direct to google colab)] (https://colab.research.google.com/drive/113UrgppJhIu03hzfXRpOVVFYntkxO7eG?usp=sharing)
-[dataset] (https://drive.google.com/file/d/1_eoIAiaWA53vCb5vepO52pxJSKp2anST/view?usp=sharing)
