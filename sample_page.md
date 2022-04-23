@@ -58,7 +58,7 @@ plt.xticks(fontsize=15)
 plt.yticks(fontsize=15)
 plt.show()
 ```
-<img src="images/download(1).png?raw=true"/>
+<img src="images/download (1).png?raw=true"/>
 
 Kita lihat dari heatmap di atas bahwa feature "reload_1" dan "reload_2" memiliki angka korelasi yang tinggi, yaitu 0.92 sehingga kita bisa memilih salah satunya saja untuk proses training. Demikian pula halnya dengan pasangan "socmed_1" dan "socmed_2" yang memiliki korelasi tinggi sehingga bisa kita buang salah satunya. Hal yang sama terjadi pada "music" dan "games". 
 
