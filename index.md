@@ -4,7 +4,7 @@ eheheh coba-coba ae dah
 
 ### Data Science
 
-[Project 1 Title](/sample_page)
+[Churn Prediction](https://colab.research.google.com/drive/113UrgppJhIu03hzfXRpOVVFYntkxO7eG?usp=sharing)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
