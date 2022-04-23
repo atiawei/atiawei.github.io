@@ -1,6 +1,6 @@
 ## Portfolio
 
-eheheh coba-coba ae dah
+
 
 ### Data Science
 
